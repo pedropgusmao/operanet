@@ -1,7 +1,7 @@
-arg_list = argv();
-dir_data = arg_list{1}
-fileList = dir([dir_data filesep '*.mat']);
-for file_num=1:length(fileList)
+function convert_and_save(data_dir)
+fileList = dir([data_dir filesep '*.mat']);
+
+for file_num =1:length(fileList)
     datafile = [fileList(file_num).folder filesep fileList(file_num).name];
     loaded_vars = load(datafile);
     loaded_vars_names = fieldnames(loaded_vars); %could be more than one
@@ -20,5 +20,6 @@ for file_num=1:length(fileList)
         end
         loaded_vars.(this_var_name) = this_var;
     end
-    save(datafile,'-struct', 'loaded_vars') 
+    save(datafile,'-struct', 'loaded_vars', '-v7') 
+end
 end
