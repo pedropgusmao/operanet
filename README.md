@@ -14,7 +14,7 @@ This repository implements functions in Python to read data from [OPERAnet, a mu
 The original OPERAnet datasets contain MATLAB `String` fields that are not compatible with Scipy. To solve this, make sure you run the `convert_and_save.m` MATLAB script on all directories containing `.mat` files.
 
 ``
-octave-cli convert_and_save /local/scratch/operanet/pwr
+octave-cli convert_and_save.m full_path_to_folder_containing_mat_files
 ``
 
 ## Data Description
