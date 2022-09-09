@@ -1,7 +1,5 @@
-#! /snap/bin/octave
-
 arg_list = argv();
-dir_data = arg_list{1};
+dir_data = arg_list{1}
 fileList = dir([dir_data filesep '*.mat']);
 for file_num=1:length(fileList)
     datafile = [fileList(file_num).folder filesep fileList(file_num).name];
@@ -14,6 +12,7 @@ for file_num=1:length(fileList)
         first_row = this_var(2,:);
         for j = 1:length(first_row) % Find which rows are strings
             if isa(first_row{j},'string')
+		    disp(first_row{j})
                 for i = 1:length(this_var)
                     this_var{i,j} = convertStringsToChars(this_var{i, j});
                 end
@@ -21,5 +20,5 @@ for file_num=1:length(fileList)
         end
         loaded_vars.(this_var_name) = this_var;
     end
-    save(datafile,'-struct', 'loaded_vars', '-v7') 
+    save(datafile,'-struct', 'loaded_vars') 
 end
