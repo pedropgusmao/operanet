@@ -15,7 +15,7 @@ for file_num =1:length(fileList)
                     this_var.(header{j}) = char(this_var.(header{j}));
                 end
             end
-
+        this_var = table2cell(this_var);
         elseif isa(this_var, 'cell') % header is not the first line
             first_row = this_var(2,:);
             for j = 1:length(first_row) % Find which rows are strings
