@@ -32,4 +32,10 @@ def read_mat(path_to_file: Path) -> DataFrame:
     # so h5py is necessary
     tmp_dict = mat73.loadmat(path_to_file, use_attrdict=True)
     k, v = tmp_dict.popitem()
-    return pd.DataFrame(v[1:], columns=v[0])
+    df = pd.DataFrame(v[1:], columns=v[0])
+    if "timestamp" in df:
+        for j in len(df["timestamp"]):
+            if isinstance(df["timestamp"][j], list):
+                df["timestamp"][j] = df["timestamp"][j][0]
+
+    return

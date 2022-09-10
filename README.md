@@ -13,7 +13,7 @@ This repository implements functions in Python to read data from [OPERAnet, a mu
 
 ### Dataset pre-processing
 
-The original OPERAnet datasets contain MATLAB `String` fields that are not compatible with Scipy. To solve this, make sure you run the `convert_and_save.m` MATLAB script on all directories containing `.mat` files  using the command below. You just have to do this once.
+The original OPERAnet datasets contain MATLAB `String` fields that are not compatible with Scipy. To solve this, make sure you run the `convert_and_save.m` MATLAB script on all directories containing `.mat` files  using the command below. You just have to do this once and it takes a looooong time.
 
 ``
 matlab -nodisplay -r "data_dir='/full/path/to/mat/files/directory'; convert_and_save(data_dir); exit"
@@ -22,6 +22,7 @@ matlab -nodisplay -r "data_dir='/full/path/to/mat/files/directory'; convert_and_
 ### Install dependencies
 
 Dependencies can be found in the `requirements.txt` file. 
+
 ``
 pip install -r requirements.txt
 `` 
@@ -74,3 +75,7 @@ pip install -r requirements.txt
 
 > Bocus, M.J., Li, W., Vishwakarma, S. et al. OPERAnet, a multimodal activity recognition dataset acquired from radio frequency and vision-based sensors. Sci Data 9, 474 (2022). https://doi.org/10.1038/s41597-022-01573-2
 
+
+# TODO
+- [ ] Add description for CSI.
+- [ ] Convert data types where necessary, i.e. datetime, category, etc.
