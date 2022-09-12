@@ -44,4 +44,4 @@ def read_parquet(path_to_file: Path) -> DataFrame:
         elif kinect_markers.match(col_name):
             df[col_name] = df[col_name].reshape((-1,3))
 
-    return
+    return df
