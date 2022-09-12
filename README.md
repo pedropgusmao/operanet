@@ -39,6 +39,8 @@ pip install -r requirements.txt
  | person_id                   | `str`          | `One`           |
  | room_no                     | `str`          | `1`             |
  | tx{1..3}rx{1..3}_sub{1..30} | complex number | `11.75 - 1.19j` |
+ | ... | ... | ... |
+
 
 
 ### Passive WiFi Radar (PWR)
@@ -79,3 +81,4 @@ pip install -r requirements.txt
 # TODO
 - [ ] Add description for CSI.
 - [ ] Convert data types where necessary, i.e. datetime, category, etc.
+- [ ] WiFi CSI files contain arrays that were stored as strings. Should these be converted back? Should this be done in MATLAB or Python?

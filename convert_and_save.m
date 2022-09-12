@@ -43,10 +43,10 @@ for file_num =1:length(fileList)
             if isa(this_var{1,j}{1}, 'numeric')
                 [m, n] = size(this_var{1,j}{1});
                 if (m ~=1) && (n~=1) % Need to transpose
-                     for i = 1:height(this_var) 
-                         tmp = cell2mat(this_var{i,j}).';
-                         this_var{i,j} = {reshape(tmp,1,[])};
-                     end
+                    for i = 1:height(this_var) 
+                        tmp = cell2mat(this_var{i,j}).';
+                        this_var{i,j} = {reshape(tmp,1,[])};
+                    end
                 elseif (m==1) && (n==1) && ~isreal(this_var{1,j}{1}) % Save complex
                     for i = 1:height(this_var) 
                         this_var{i,j} = {[real(this_var{i,j}) imag(this_var{i,j})] };
@@ -54,16 +54,13 @@ for file_num =1:length(fileList)
                 end
             end  
 
-        elseif isa(this_var{1,j}, 'numeric')
+        elseif isa(this_var{1,j}, 'numeric') && ~isreal(this_var{1,j}) % Hopefully first elements is not 0j
             this_column_name = header{j};
-            this_var = removevars(this_var, {this_column_name});
             temp = [ real(this_var{:,j}) imag(this_var{:,j}) ];
             temp = num2cell(temp,2);
             T = table(temp);
             T.Properties.VariableNames{'temp'} = this_column_name;
             this_var.(this_column_name) = T.(this_column_name);
-            %this_var = [ this_var T.(this_column_name)];
-            disp("Done processing column")
         end
     end
     % Save to parquet
